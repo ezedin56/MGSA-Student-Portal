@@ -1,73 +1,89 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div
+  class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8"
+>
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Welcome to MGSA Portal
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Sign in to your account or create a new one
+      </p>
+    </div>
 
-{% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-        <div>
-            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-                Welcome to MGSA Portal
-            </h2>
-            <p class="mt-2 text-center text-sm text-gray-600">
-                Sign in to your account or create a new one
-            </p>
-        </div>
-
-        <!-- Display Messages -->
-        {% if messages %}
-        <div class="space-y-2">
-            {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} 
+    <!-- Display Messages -->
+    {% if messages %}
+    <div class="space-y-2">
+      {% for message in messages %}
+      <div
+        class="alert alert-{{ message.tags }} 
                 {% if message.tags == 'success' %}bg-green-500 text-white
                 {% elif message.tags == 'error' %}bg-red-500 text-white
                 {% elif message.tags == 'warning' %}bg-yellow-500 text-gray-800
                 {% else %}bg-blue-500 text-white{% endif %} 
-                p-4 rounded-lg shadow-md">
-                <div class="flex items-center">
-                    {% if message.tags == 'success' %}
-                        <i class="fas fa-check-circle mr-2"></i>
-                    {% elif message.tags == 'error' %}
-                        <i class="fas fa-exclamation-circle mr-2"></i>
-                    {% elif message.tags == 'warning' %}
-                        <i class="fas fa-exclamation-triangle mr-2"></i>
-                    {% else %}
-                        <i class="fas fa-info-circle mr-2"></i>
-                    {% endif %}
-                    {{ message }}
-                </div>
-            </div>
-            {% endfor %}
+                p-4 rounded-lg shadow-md"
+      >
+        <div class="flex items-center">
+          {% if message.tags == 'success' %}
+          <i class="fas fa-check-circle mr-2"></i>
+          {% elif message.tags == 'error' %}
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          {% elif message.tags == 'warning' %}
+          <i class="fas fa-exclamation-triangle mr-2"></i>
+          {% else %}
+          <i class="fas fa-info-circle mr-2"></i>
+          {% endif %} {{ message }}
         </div>
-        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
-        <!-- Login Form -->
-        <div class="bg-white p-6 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold mb-4">Sign In</h3>
-            <form class="space-y-4" method="POST" action="{% url 'login-submit' %}">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ next }}">
-                
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-                    <input id="email" name="email" type="email" required 
-                           class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                           placeholder="Enter your email address">
-                </div>
-                
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input id="password" name="password" type="password" required 
-                           class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                           placeholder="Enter your password">
-                </div>
+    <!-- Login Form -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-lg font-semibold mb-4">Sign In</h3>
+      <form class="space-y-4" method="POST" action="{% url 'login-submit' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
 
-                <button type="submit" 
-                        class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Sign In
-                </button>
-            </form>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700"
+            >Email Address</label
+          >
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+            placeholder="Enter your email address"
+          />
         </div>
-        <!--
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+            placeholder="Enter your password"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+    <!--
         Registration Form 
         <div class="bg-white p-6 rounded-lg shadow-md">
             <h3 class="text-lg font-semibold mb-4">Create New Account</h3>
@@ -152,62 +168,64 @@
 </div>
 {% endblock %}
 -->
-{% block extra_scripts %}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Auto-hide messages after 5 seconds
-    const messages = document.querySelectorAll('.alert');
-    messages.forEach(function(message) {
-        setTimeout(function() {
-            message.style.transition = 'opacity 0.5s ease';
-            message.style.opacity = '0';
-            setTimeout(function() {
-                if (message.parentElement) {
-                    message.remove();
-                }
-            }, 500);
-        }, 5000);
-    });
+    {% block extra_scripts %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          // Auto-hide messages after 5 seconds
+          const messages = document.querySelectorAll('.alert');
+          messages.forEach(function(message) {
+              setTimeout(function() {
+                  message.style.transition = 'opacity 0.5s ease';
+                  message.style.opacity = '0';
+                  setTimeout(function() {
+                      if (message.parentElement) {
+                          message.remove();
+                      }
+                  }, 500);
+              }, 5000);
+          });
 
-    // Real-time password validation for registration form
-    const password1 = document.getElementById('password1');
-    const password2 = document.getElementById('password2');
-    const submitButton = document.querySelector('form[action="{% url 'register-page' %}"] button[type="submit"]');
-    
-    function validatePasswords() {
-        const password1Value = password1.value;
-        const password2Value = password2.value;
-        
-        if (password2Value && password1Value !== password2Value) {
-            password2.style.borderColor = '#f56565';
-            password2.style.backgroundColor = '#fef5f5';
-            if (submitButton) {
-                submitButton.disabled = true;
-                submitButton.classList.add('opacity-50', 'cursor-not-allowed');
-            }
-        } else {
-            password2.style.borderColor = '';
-            password2.style.backgroundColor = '';
-            if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-            }
-        }
-        
-        // Validate password length
-        if (password1Value && password1Value.length < 6) {
-            password1.style.borderColor = '#f56565';
-            password1.style.backgroundColor = '#fef5f5';
-        } else {
-            password1.style.borderColor = '';
-            password1.style.backgroundColor = '';
-        }
-    }
-    
-    if (password1 && password2) {
-        password1.addEventListener('input', validatePasswords);
-        password2.addEventListener('input', validatePasswords);
-    }
-});
-</script>
-{% endblock %}
+          // Real-time password validation for registration form
+          const password1 = document.getElementById('password1');
+          const password2 = document.getElementById('password2');
+          const submitButton = document.querySelector('form[action="{% url 'register-page' %}"] button[type="submit"]');
+
+          function validatePasswords() {
+              const password1Value = password1.value;
+              const password2Value = password2.value;
+
+              if (password2Value && password1Value !== password2Value) {
+                  password2.style.borderColor = '#f56565';
+                  password2.style.backgroundColor = '#fef5f5';
+                  if (submitButton) {
+                      submitButton.disabled = true;
+                      submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+                  }
+              } else {
+                  password2.style.borderColor = '';
+                  password2.style.backgroundColor = '';
+                  if (submitButton) {
+                      submitButton.disabled = false;
+                      submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
+                  }
+              }
+
+              // Validate password length
+              if (password1Value && password1Value.length < 6) {
+                  password1.style.borderColor = '#f56565';
+                  password1.style.backgroundColor = '#fef5f5';
+              } else {
+                  password1.style.borderColor = '';
+                  password1.style.backgroundColor = '';
+              }
+          }
+
+          if (password1 && password2) {
+              password1.addEventListener('input', validatePasswords);
+              password2.addEventListener('input', validatePasswords);
+          }
+      });
+    </script>
+    {% endblock %}
+  </div>
+</div>
