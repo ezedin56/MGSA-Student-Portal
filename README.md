@@ -9,7 +9,7 @@ A comprehensive student management portal with advanced analytics built with Dja
 
 ## 🎯 Live Demo
 
-**🌐 Live Site:** [https://your-vercel-app.vercel.app](https://your-vercel-app.vercel.app)  
+**🌐 Live Site:** https://zestful-optimism-mgsa-student-portal.up.railway.app/ 
 **👤 Demo Admin:** admin / admin123  
 **👨‍🎓 Demo Student:** student / student123  
 
