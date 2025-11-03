@@ -11,7 +11,6 @@ A comprehensive student management portal with advanced analytics built with Dja
 
 **🌐 Live Site:** https://zestful-optimism-mgsa-student-portal.up.railway.app/ 
 **👤 Demo Admin:** admin / admin123  
-**👨‍🎓 Demo Student:** student / student123  
 
 ## ✨ Key Features
 
